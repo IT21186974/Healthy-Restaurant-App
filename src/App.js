@@ -9,6 +9,7 @@ import RecipeForm from './components/RecipeForm';
 import EditRecipe from './components/EditRecipeForm';
 import Home from './pages/Home';
 import SearchRecipes from './components/SearchRecipes';
+import AllRecipes from './components/AllRecipes';
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/add-recipe" element={<RecipeForm />} />
                     <Route path="/edit-recipe/:id" element={<EditRecipe />} />
                     <Route path="/search" element={<SearchRecipes />} />
+                    <Route path="/recipe-wall" element={<AllRecipes />} />
                 </Routes>
             </Router>
         </AuthProvider>

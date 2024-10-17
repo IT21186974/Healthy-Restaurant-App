@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import { Button, TextField, Typography, Container, Paper } from '@mui/material';
 import { Lock } from '@mui/icons-material';
+import { CancelOutlined } from '@mui/icons-material';
 
 const Login = () => {
     const { setUser } = useContext(AuthContext);
@@ -31,6 +32,10 @@ const Login = () => {
         }
     };
     
+    const handleCancel = () => {
+        navigate('/');
+    };
+
     return (
         <Container component={Paper} elevation={3} maxWidth="sm" style={{ padding: '20px', marginTop: '50px' }}>
             <Typography variant="h5" align="center" gutterBottom>
@@ -57,16 +62,26 @@ const Login = () => {
                     required 
                 />
                 {error && <Typography color="error" align="center">{error}</Typography>}
+                <br></br><br></br>
                 <Button 
                     type="submit" 
                     variant="contained" 
-                    color="success" 
+                    style={{ backgroundColor: '#ffbc00', color: '#000000', marginTop: '20px' }}
                     fullWidth 
                     startIcon={<Lock />}
-                    style={{ marginTop: '20px' }}
                 >
                     Login
                 </Button>
+                <Button 
+                    variant="contained" 
+                    onClick={handleCancel} 
+                    fullWidth 
+                    style={{ backgroundColor: '#717274', color: '#ffffff', marginTop: '10px' }}
+                    startIcon={<CancelOutlined />}
+                >
+                    Cancel
+                </Button>
+                <br></br><br></br>
             </form>
         </Container>
     );

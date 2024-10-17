@@ -8,7 +8,7 @@ const SearchRecipes = () => {
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        setErrorMessage(''); // Reset any previous error message
+        setErrorMessage('');
 
         try {
             const response = await axios.get(`http://localhost:5000/api/recipes/search?query=${searchQuery}`, {

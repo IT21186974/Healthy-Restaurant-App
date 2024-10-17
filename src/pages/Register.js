@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { TextField, Button, Typography, Container, Paper } from '@mui/material';
-import { AccountCircle } from '@mui/icons-material';
+import { AccountCircle, CancelOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 
@@ -21,12 +21,16 @@ const Register = () => {
             
             // Set the user context
             setUser({ username });
-            // Redirect to the login page
-            navigate('/login'); // Adjust the path as necessary
+
+            navigate('/login');
         } catch (error) {
             console.error('Error registering:', error);
-            alert('Registration failed. Please try again.'); // Optional error message
+            alert('Registration failed. Please try again.');
         }
+    };
+
+    const handleCancel = () => {
+        navigate('/');
     };
 
     return (
@@ -63,16 +67,26 @@ const Register = () => {
                     onChange={(e) => setPassword(e.target.value)} 
                     required 
                 />
+                <br></br><br></br>
                 <Button 
                     type="submit" 
                     variant="contained" 
-                    color="success" 
                     fullWidth 
-                    style={{ marginTop: '20px' }} 
+                    style={{ backgroundColor: '#ffbc00', color: '#000000', marginTop: '20px' }}
                     startIcon={<AccountCircle />}
                 >
                     Register
                 </Button>
+                <Button 
+                    variant="contained" 
+                    onClick={handleCancel} 
+                    fullWidth 
+                    style={{ backgroundColor: '#717274', color: '#ffffff', marginTop: '10px' }}
+                    startIcon={<CancelOutlined />}
+                >
+                    Cancel
+                </Button>
+                <br></br><br></br>
             </form>
         </Container>
     );
