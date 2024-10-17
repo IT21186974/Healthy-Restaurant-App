@@ -6,11 +6,11 @@ const User = require('../models/userModel');
 
 // POST route for user registration
 router.post('/register', async (req, res) => {
-    const { username, email, password } = req.body; // Include email
+    const { username, email, password } = req.body;
 
     try {
         // Check if the user already exists
-        let user = await User.findOne({ email }); // Check by email
+        let user = await User.findOne({ email });
         if (user) {
             return res.status(400).json({ msg: 'User already exists' });
         }

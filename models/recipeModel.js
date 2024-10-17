@@ -25,6 +25,30 @@ const RecipeSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    cookingTime: {
+        type: Number,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    dietaryPreference: {
+        type: String,
+        required: false
+    },
+    votes: { 
+        type: Number, 
+        default: 0 
+    },
+    voters: [{ 
+        type: mongoose.Schema.Types.ObjectId, 
+        ef: 'User' 
+    }],
+    createdAt: { 
+        type: Date, 
+        default: Date.now 
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Recipe', RecipeSchema);
